@@ -1,9 +1,6 @@
 # Créez vos documents avec R Markdown
 
 
-## Contenu du repository
-
-Ce repo comprend les fichiers source de la présentation en :fr: du 21/01/19.  
 
 ## Résumé
 
