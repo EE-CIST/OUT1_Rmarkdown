@@ -1,7 +1,7 @@
 ---
 title: "Programmation lettrée et _Notebook_"
 author: "Module d'initiation à R"
-date: 
+date: Ecole d'été du CIST 2023 - Ouidah, Bénin
 output:
   ioslides_presentation:
     logo: img/rmarkdown.png
@@ -41,9 +41,6 @@ Menu `File > New File > R Markdown...`
 
 <img src="img/create_rmd.png" width="60%" style="display: block; margin: auto;" />
 
-## Choix du format et du template
-
-<img src="img/template_rmd.png" width="70%" style="display: block; margin: auto;" />
 
 ## Enregistrer le fichier .rmd crée
 
@@ -84,7 +81,7 @@ Menu `File > New File > R Markdown...`
 <font size="4">Documentation &rarr; [***Chunk options and package options***](https://yihui.org/knitr/options/)</font>  
 
 
-## En-tête du document (`YAML`)
+## A. En-tête du document (`YAML`)
 
 ```yaml
 ---
@@ -102,7 +99,7 @@ output:
 
 <font size="4">**De nombreuses variables sont paramétrables**. Certaines sont spécifiques à des formats de sortie ou à des templates. Mais, dans tous les cas :</font>
 
-[`<svg aria-hidden="true" role="img" viewBox="0 0 576 512" style="height:1em;width:1.12em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M569.517 440.013C587.975 472.007 564.806 512 527.94 512H48.054c-36.937 0-59.999-40.055-41.577-71.987L246.423 23.985c18.467-32.009 64.72-31.951 83.154 0l239.94 416.028zM288 354c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z"/></svg>`{=html} **L'indentation des variables doit être parfaite !**]{}
+[`<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224c0-17.7-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32s32-14.3 32-32z"/></svg>`{=html} **L'indentation des variables doit être parfaite !**]{}
 
 
 
@@ -211,8 +208,7 @@ Cette fonctionnalité est aussi disponible en clic-bouton via l'interface Rstudi
 
 
 
-## Texte balisé en `markdown`
-
+## B. Zone de texte - balisage `markdown`
 
 
 ``` {.markdown .eval}
@@ -333,28 +329,20 @@ X^2^
 
 
 
+## C. Bloc de code - *chunks*
 
-
-
-
-
-## Ligne de code
-
-
-
-## `knitr` chunks {data-background="assets/2rg8dc.jpg" data-background-position="50% 75%" data-background-size="35%"}
-
-## Deux façons d'insérer du code dans son document
+Deux façons d'insérer du code dans son document :
 
 1. Code chunk  
 
     ````r
     ```{r, eval=TRUE, echo=FALSE}
+    
     head(mtcars)
+    
     ```
     ````
     
-    De nombreuses options ! [yihui.name/knitr/options](https://yihui.name/knitr/options/)
     
 1. Inline code 
 
@@ -362,7 +350,13 @@ X^2^
     La moyenne est de `r mean(mtcars$cyl)`.
     ````
 
-## Différents langages autorisés
+## Les [options d'un chunk](https://yihui.name/knitr/options/)
+
+
+<img src="img/chunk_params.jpg" width="65%" style="display: block; margin: auto;" />
+
+
+## *chunk* multilangage
 
 
 ```r
@@ -371,16 +365,49 @@ names(knitr::knit_engines$get())
 
 ```
 ##  [1] "awk"       "bash"      "coffee"    "gawk"      "groovy"    "haskell"  
-##  [7] "lein"      "mysql"     "node"      "octave"    "perl"      "php"      
-## [13] "psql"      "Rscript"   "ruby"      "sas"       "scala"     "sed"      
-## [19] "sh"        "stata"     "zsh"       "asis"      "asy"       "block"    
-## [25] "block2"    "bslib"     "c"         "cat"       "cc"        "comment"  
-## [31] "css"       "ditaa"     "dot"       "embed"     "eviews"    "exec"     
-## [37] "fortran"   "fortran95" "go"        "highlight" "js"        "julia"    
-## [43] "python"    "R"         "Rcpp"      "sass"      "scss"      "sql"      
-## [49] "stan"      "targets"   "tikz"      "verbatim"  "glue"      "glue_sql" 
-## [55] "gluesql"
+##  [7] "lein"      "mysql"     "node"      "octave"    "perl"      "psql"     
+## [13] "Rscript"   "ruby"      "sas"       "scala"     "sed"       "sh"       
+## [19] "stata"     "zsh"       "asis"      "asy"       "block"     "block2"   
+## [25] "bslib"     "c"         "cat"       "cc"        "comment"   "css"      
+## [31] "ditaa"     "dot"       "embed"     "exec"      "fortran"   "fortran95"
+## [37] "go"        "highlight" "js"        "julia"     "python"    "R"        
+## [43] "Rcpp"      "sass"      "scss"      "sql"       "stan"      "targets"  
+## [49] "tikz"      "verbatim"  "glue"      "glue_sql"  "gluesql"
 ```
+
+
+## Cheatsheet Rmarkdown
+
+
+[[R Markdown Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf) par [RStudio](https://www.rstudio.com/), licence [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)]{.license}
+
+<iframe src="https://posit.co/wp-content/uploads/2022/10/rmarkdown-1.pdf"></iframe>
+
+
+
+
+## Références
+
+Xie, Y., J.J. Allaire et G. Grolemund _R Markdown: The Definitive Guide_ <https://bookdown.org/yihui/rmarkdown/>
+
+Xie, Y. _`knitr` Elegant, flexible, and fast dynamic report generation with R_ <https://yihui.name/knitr/>
+
+En cours de rédaction :  
+Harper M. et Y. Xie _R Markdown Cookbook_ <https://dr-harper.github.io/rmarkdown-cookbook/>
+
+Romain Lesur
+
+Julien Barnier : <https://juba.github.io/tidyverse/13-rmarkdown.html>
+
+https://bookdown.org/yihui/rmarkdown/
+
+https://bookdown.org/yihui/bookdown/
+
+https://bookdown.org/yihui/rmarkdown-cookbook/
+
+
+## A vous de jouer !
+
 
 ## Exemple : `python` avec le package `reticulate` {.smaller}
 
@@ -524,14 +551,6 @@ DBI::dbDisconnect(conn)
 
 
 
-## Markdown : simple mais puissant {data-background="assets/2rfogh.jpg" data-background-position="10% 75%" data-background-size="45%"}
-
-<div style="padding-left:55%;">
-**Lisez la documentation de Pandoc au moins une fois !**
-
-**[pandoc.org/MANUAL#pandocs-markdown](https://pandoc.org/MANUAL#pandocs-markdown)**
-
-</div>
 
 ## R Markdown Cheat Sheet
 
@@ -543,9 +562,6 @@ DBI::dbDisconnect(conn)
 }
 </style>
 
-[[R Markdown Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf) par [RStudio](https://www.rstudio.com/), licence [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)]{.license}
-
-<!-- `<embed id="cheatsheet" src="https://drive.google.com/viewerng/viewer?embedded=true&amp;url=https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf" width="100%" height="500px"/>`{=html} -->
 
 ## Le fonctionnement de R Markdown
 
@@ -559,105 +575,4 @@ Le package `rmarkdown` assure la bonne exécution des étapes suivantes :
 Pour les pdf avec $\LaTeX$, étape supplémentaire :
 
 - fichier `.tex`  fichier `.pdf` = $\LaTeX$ 
-
-## Hacker R Markdown
-
-On peut aller très loin dans l'adaptation de R Markdown
-
-- Hacker RStudio
-
-- Hacker R Markdown
-
-- Hacker `knitr`
-
-- Hacker `pandoc`
-
-## Hacker RStudio
-
-_Exemple : Hacker le bouton `knit` de RStudio_
-
-Rajouter dans l'en-tête YAML du fichier `Rmd` une ligne qui renvoie une fonction $\lambda$ ayant pour arguments `(inputFile, encoding)`
-
-```yaml
-knit: (function(inputFile, encoding){...})
-```
-
-Si en plus la fonction comprend `message("Output created: ", outputFile)`, le viewer de RStudio l'ouvrira.
-
-Voir <https://github.com/rstudio/rmarkdown/issues/277>
-
-## Hacker R Markdown
-
-On peut créer des nouveaux formats avec `rmarkdown::output_format()` :
-
-```r
-function (knitr, pandoc, keep_md = FALSE, clean_supporting = TRUE, 
-    df_print = NULL, pre_knit = NULL, post_knit = NULL, pre_processor = NULL, 
-    intermediates_generator = NULL, post_processor = NULL, on_exit = NULL, 
-    file_scope = NULL, base_format = NULL) 
-```
-
-- `knitr` et `pandoc` : options passées à `knitr` et `pandoc`
-
-- `pre_knit`, `post_knit`, `pre_processor`, `intermediates_generator`, `post_processor` et `on_exit` : des fonctions appelées à chaque étape de la génération du document
-
-## Hacker `knitr` {.smaller}
-
-Des dizaines d'options...  
-**Exemple : _hooks_** 
-
-`` `r pi` `` donne par défaut :  3.1415927.  
-Mais on voudrait avoir des `,` à la place des `.`
-
-Avec le _hook_ suivant, on peut modifier le comportement des _inlines codes_ :
-
-
-```r
-default_hook <- knitr::knit_hooks$get()$inline
-knitr::knit_hooks$set(inline = function(x) {
-  default_text <- default_hook(x)
-  if (!is.numeric(x))
-    return(default_text)
-  gsub("\\.", ",", default_text)
-})
-```
-
-Et maintenant `` `r pi` `` donne 3,1415927.
-
-## Hacker `pandoc`
-
-Lorsque `pandoc` transforme un document d'un format vers un autre, il passe par une représentation sous forme arbre syntaxique abstrait (qu'on peut sérialiser en JSON, par ex.).  
-On peut modifier cet AST grâce à des filtres, voir <https://pandoc.org/filters.html>.
-
-Langages acceptés : tous (!)  
-`lua` privilégié depuis pandoc 2
-
-Egalement la possibilité de développer son propre sérialiseur : <https://pandoc.org/MANUAL.html#custom-writers>
-
-
-## Cheatsheet Rmarkdown
-
-<iframe src="https://posit.co/wp-content/uploads/2022/10/rmarkdown-1.pdf"></iframe>
-
-
-
-
-## Références
-
-Xie, Y., J.J. Allaire et G. Grolemund _R Markdown: The Definitive Guide_ <https://bookdown.org/yihui/rmarkdown/>
-
-Xie, Y. _`knitr` Elegant, flexible, and fast dynamic report generation with R_ <https://yihui.name/knitr/>
-
-En cours de rédaction :  
-Harper M. et Y. Xie _R Markdown Cookbook_ <https://dr-harper.github.io/rmarkdown-cookbook/>
-
-Romain Lesur
-
-Julien Barnier : <https://juba.github.io/tidyverse/13-rmarkdown.html>
-
-https://bookdown.org/yihui/rmarkdown/
-
-https://bookdown.org/yihui/bookdown/
-
-https://bookdown.org/yihui/rmarkdown-cookbook/
 
