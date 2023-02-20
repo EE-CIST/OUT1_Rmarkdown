@@ -1,28 +1,33 @@
-# Créez vos documents avec R Markdown
+# Programmation lettrée et Notebook
+## Atelier pratique avec Rmarkdown
+
+#### Ecole d'été du CIST -Mars 2023 - Ouidah, Bénin
 
 
-
-## Résumé
+### Résumé
 
 R Markdown est un concept unique qui permet de créer de façon simple, efficace et reproductible tous types de documents : notes de travail, rapports, articles scientifiques, thèses, livres, sujets d'examen... dans de très nombreux formats (HTML, PDF, MS Word, LibreOffice...).  
-Avec R Markdown, vous pouvez combiner naturellement votre contenu avec des portions de code dont le résultat (graphiques, tableaux...) est inséré dans le document final. Vous pourrez ainsi actualiser vos documents en un clin d'oeil : fini les copier-coller ! 
+Avec R Markdown, vous pouvez combiner naturellement votre contenu avec des portions de code dont le résultat (graphiques, tableaux...) est inséré dans le document final. La mise à jour de document devient alors un jeu d'enfant !
 
 Que vous soyez étudiant, professionnel de la data, enseignant, chercheur... R Markdown vous simplifiera la vie.
 
 Et le plus fort, c'est que R Markdown est compatible avec de très nombreux langages (python, node.js, ruby, coffeescript, SAS, julia, perl, C, go, SQL...) et totalement customisable.
 
-## Crédits 
+\
 
-[Sharon McCutcheon on Unsplash](https://unsplash.com/@sharonmccutcheon?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge)
+#### &rarr; **Consulter le** [**diaporama**](https://ee-cist.github.io/OUT1_Rmarkdown/#1)   
 
-## Memes
+</br>
 
-<https://imgflip.com/i/2riz84>
+*Code :* [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)     
+*Document :* [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC_BY--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 
-<https://imgflip.com/i/2rfny8>
 
-<https://imgflip.com/i/2rj0z1>
 
-<https://imgflip.com/i/2rg8dc>
 
-<https://imgflip.com/i/2rfogh>
+
+
+
+ 
+
+
