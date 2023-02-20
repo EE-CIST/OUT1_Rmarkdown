@@ -1,22 +1,21 @@
 ---
-title: |
-  Créez vos documents avec [![R Markdown](https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/rmarkdown.png){width=100 style="vertical-align: middle;"}](https://bookdown.org/yihui/rmarkdown/)
-pagetitle: Créez vos documents avec R Markdown
-author: |
-  **EE CIST**
-date: Mars 2023
+title: "Programmation lettrée et _Notebook_"
+author: "Module d'initiation à R"
+date: "Ecole été du CIST - mars 2023"
 output:
   ioslides_presentation:
-    df_print: kable
-    widescreen: true
-    self_contained: false
-    # logo: "assets/meetuprnantes.jpeg"
-    keep_md: true
+    logo: img/rmarkdown.png
+    keep_md: yes
+  beamer_presentation: default
+pagetitle: Créez des documents avec R Markdown
+subtitle: __Atelier pratique avec Rmarkdown__
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(htmltools)
+library(emoji)
+library(knitr)
 ```
 
 ```{css firstpagebg, echo=FALSE}
@@ -29,14 +28,7 @@ library(htmltools)
 ```
 
 
-  
-
-## Pourquoi utiliser R Markdown ? {data-background=assets/2riz84.jpg data-background-position="50% 75%" data-background-size=70%}
-
-## Pourquoi utiliser R Markdown ? {data-background=assets/2rfny8.jpg data-background-position="50% 75%" data-background-size=70%}
-
-
-## Un principe : _Keep it simple_
+## Exemple simple : rmd en pdf 
 
 ```{r, echo=FALSE}
 tmp_files <- tempfile(fileext = c(".md", ".html"))
@@ -45,7 +37,7 @@ tmp_files <- as.list(tmp_files)
 
 writeLines(
   c(
-    "~~~~~~markdown", 
+    "~~~~~~markdown",
     paste0(readLines("simple.Rmd")),
     "~~~~~~"
   ),
@@ -56,41 +48,82 @@ rmarkdown::pandoc_convert(
   input = tmp_files$md, 
   to = "html5", 
   output = tmp_files$html,
-  options = c("-s", '-M', 'title="Fichier R Markdown"', '-M', 'lang="fr"')
+  options = c("-s",  '-M',  'title=Fichier source (.rmd) :'  ,'-M', 'lang="fr"')
 )
 
 srcdoc <- paste(readLines(tmp_files$html), collapse = "\n")
 
-div(class = "columns-2",
-  tags$embed(src= "simple.pdf", type="application/pdf", width="100%", height="500px"),
-  div(
-    tag("iframe", list(srcdoc = srcdoc, style = 'height:500px!important;'))
+div(class = "columns-2",  
+
+    tags$embed(src= "simple.pdf", type="application/pdf", width="100%", height="500px"),
+        div(tag("iframe", list(srcdoc = srcdoc, style = 'height:500px!important;'))
+
   )
 )
 ```
 
-## Prise en main dans RStudio
+## Prise en main facile avec RStudio
 
-- RStudio : compagnon idéal 
-  * Menu `File > New File > R Markdown...`
-  * Conseil : désactiver le mode _notebook_   
-  `Tools > Global Options` `r htmltools::img(src= "assets/rstd.png", width = "300px", style='vertical-align:text-top;')`
-- pour les pdf, si vous n'avez pas $\LaTeX$ d'installé, utilisez le package [`tinytex`](https://cran.r-project.org/package=tinytex)
-[_demo..._]{style="float:right;padding-top:40px;"}
+Menu `File > New File > R Markdown...`
 
-## Concepts de base de R Markdown
+```{r  include = TRUE, eval = TRUE, echo = FALSE, fig.align='center', out.width="60%"}
+include_graphics("img/create_rmd.png")
+```
 
-1. En-tête `YAML` : indications données au package [`rmarkdown`](https://bookdown.org/yihui/rmarkdown/) (type de document souhaité, options, méta-données...)
+## Choix du format et du template
 
-1. _Chunks_ : code dont le résulat sera inséré dans le document final ( [`knitr`](https://yihui.name/knitr/))
+```{r  include = TRUE, eval = TRUE, echo = FALSE, fig.align='center', out.width="70%"}
+include_graphics("img/template_rmd.png")
+```
 
-1. `Markdown` : une façon simple d'écrire du texte ( [`pandoc`](https://pandoc.org/MANUAL.html#pandocs-markdown))
+## Enregistrer le fichier .rmd crée
 
-Introduction en 
+```{r  include = TRUE, eval = TRUE, echo = FALSE, fig.align='center', out.width="100%"}
+include_graphics("img/untitled2.png")
+```
 
-- Julien Barnier : <https://juba.github.io/tidyverse/13-rmarkdown.html>
+## Compiler (*knit*) un Rmarkdown
 
-## En-tête du document
+```{r  include = TRUE, eval = TRUE, echo = FALSE, fig.align='center', out.width="100%"}
+include_graphics("img/knit2.png")
+```
+
+
+## Fichier généré (exemple HTML) 
+
+<iframe src="mon_premier_rmarkdown.html"></iframe>
+
+
+##  `r emoji('knit')` Tricot d'un Rmarkdown ?
+
+```{r include = TRUE, eval = TRUE, echo = FALSE, fig.align='center', out.width="100%"}
+include_graphics("img/schema_rmd.png")
+```
+
+<font size="4">Pandoc est généralement pré-installé sur les systèmes d'exploitation MACOS et Windows.</font>    
+<font size="4">Si vous n'avez pas $\LaTeX$ d'installé, utilisez le package [`tinytex`](https://cran.r-project.org/package=tinytex) pour la compilation en pdf.</font>
+
+
+
+## Rappel : les 3 composants d'un rmd
+
+```{r include = TRUE, eval = TRUE, echo = FALSE, fig.align='center', out.width="100%"}
+include_graphics("img/rmardown.PNG")
+```
+
+## Rappel : les 3 composants d'un rmd
+
+- **En-tête `YAML`** : indications de variables pour la compilation du document : métadonnées (titre, auteur, date...), type de document souhaité (format et template), options de mise en page (TOC, Bibliographie, CSS...).    
+<font size="4">Documentation &rarr; [***R Markdown: The Definitive Guide***](https://bookdown.org/yihui/rmarkdown/html-document.html).</font>  
+
+- **Texte balisé en `Markdown`** : texte en langage naturel mis forme grâce à la syntaxe markdown.    
+<font size="4">Documentation &rarr; [***Learn X in Y minutes***](https://learnxinyminutes.com/docs/markdown/)</font>  
+
+- **_Chunks_** : code qui sera affiché (ou pas) et dont le résultat sera inséré (ou pas) dans le document final. Plusieurs options permettent de gérer l'éxécution,  l'affichage du code et de résultats.   
+<font size="4">Documentation &rarr; [***Chunk options and package options***](https://yihui.org/knitr/options/)</font>  
+
+
+## En-tête du document (`YAML`)
 
 ```yaml
 ---
@@ -107,6 +140,11 @@ output:
 ```
 
 [`r fontawesome::fa('exclamation-triangle', fill= "red")` **Attention à l'indentation**]{}
+
+
+
+
+
 
 ## Multipliez les format de sortie
 
@@ -175,6 +213,12 @@ Disponible depuis le bouton `Knit` de RStudio ou
 ```r
 rmarkdown::render("monfichier.Rmd", params = list(annee = 2018, region = Europe))
 ```
+
+## Texte balisé en `markdown`
+
+## Ligne de code
+
+
 
 ## `knitr` chunks {data-background="assets/2rg8dc.jpg" data-background-position="50% 75%" data-background-size="35%"}
 
@@ -346,7 +390,7 @@ DBI::dbDisconnect(conn)
 
 [[R Markdown Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf) par [RStudio](https://www.rstudio.com/), licence [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)]{.license}
 
-`r tags$embed(id="cheatsheet", src="https://drive.google.com/viewerng/viewer?embedded=true&url=https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf", width="100%", height="500px")`
+<!-- `r tags$embed(id="cheatsheet", src="https://drive.google.com/viewerng/viewer?embedded=true&url=https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf", width="100%", height="500px")` -->
 
 ## Le fonctionnement de R Markdown
 
@@ -441,6 +485,14 @@ Langages acceptés : tous (!)
 
 Egalement la possibilité de développer son propre sérialiseur : <https://pandoc.org/MANUAL.html#custom-writers>
 
+
+## Cheatsheet Rmarkdown
+
+<iframe src="https://posit.co/wp-content/uploads/2022/10/rmarkdown-1.pdf"></iframe>
+
+
+
+
 ## Références
 
 Xie, Y., J.J. Allaire et G. Grolemund _R Markdown: The Definitive Guide_ <https://bookdown.org/yihui/rmarkdown/>
@@ -449,4 +501,14 @@ Xie, Y. _`knitr` Elegant, flexible, and fast dynamic report generation with R_ <
 
 En cours de rédaction :  
 Harper M. et Y. Xie _R Markdown Cookbook_ <https://dr-harper.github.io/rmarkdown-cookbook/>
+
+Romain Lesur
+
+Julien Barnier : <https://juba.github.io/tidyverse/13-rmarkdown.html>
+
+https://bookdown.org/yihui/rmarkdown/
+
+https://bookdown.org/yihui/bookdown/
+
+https://bookdown.org/yihui/rmarkdown-cookbook/
 

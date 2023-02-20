@@ -1,18 +1,16 @@
 ---
-title: "Keep It Simple"
-author: "Romain Lesur"
+title: "Mon module de cours"
+author: "Marc Done"
+date: "29/03/2023"
 output: 
   pdf_document:
     df_print: kable
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, message = FALSE)
-```
 
 ## Introduction
 
-Quelques mots sur les données.
+Quelques mots sur les **objectifs de ce cours** et les données utilisées.
 
 ## Du texte et un graphique
 
@@ -20,7 +18,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas euismod, dolor
 
 Source du graphique : http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html
 
-```{r graphique, fig.height=4}
+```{r graphique, eval = TRUE, echo = TRUE, message = FALSE, fig.height=4}
 library(ggplot2)
 library(quantmod)
 data("economics", package = "ggplot2")
