@@ -3,6 +3,11 @@
 
 #### Ecole d'été du CIST -Mars 2023 - Ouidah, Bénin
 
+</br>
+
+#### &rarr; **Consulter le** [**diaporama**](https://ee-cist.github.io/OUT1_Rmarkdown/#1)   
+
+</br>
 
 ### Résumé
 
@@ -12,10 +17,6 @@ Avec R Markdown, vous pouvez combiner naturellement votre contenu avec des porti
 Que vous soyez étudiant, professionnel de la data, enseignant, chercheur... R Markdown vous simplifiera la vie.
 
 Et le plus fort, c'est que R Markdown est compatible avec de très nombreux langages (python, node.js, ruby, coffeescript, SAS, julia, perl, C, go, SQL...) et totalement customisable.
-
-\
-
-#### &rarr; **Consulter le** [**diaporama**](https://ee-cist.github.io/OUT1_Rmarkdown/#1)   
 
 </br>
 

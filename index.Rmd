@@ -1,13 +1,13 @@
 ---
 title: "Programmation lettrée et _Notebook_"
 author: "Module d'initiation à R"
-date: "Ecole été du CIST - mars 2023"
+date: 
 output:
   ioslides_presentation:
     logo: img/rmarkdown.png
     keep_md: yes
   beamer_presentation: default
-pagetitle: Créez des documents avec R Markdown
+pagetitle: Atelier pratique avec Rmarkdown
 subtitle: __Atelier pratique avec Rmarkdown__
 ---
 
@@ -16,6 +16,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(htmltools)
 library(emoji)
 library(knitr)
+
 ```
 
 ```{css firstpagebg, echo=FALSE}
@@ -127,94 +128,261 @@ include_graphics("img/rmardown.PNG")
 
 ```yaml
 ---
-title: Créez vos documents avec R Markdown
-author: Romain Lesur
-date: 21 janvier 2019
+title: Programmation lettrée et Notebook
+author: Marc Done
+date: `r Sys.Date()`
 output: 
   ioslides_presentation:
+    transition: slower
+    incremental: true
     widescreen: true
-    self_contained: false
-    logo: "assets/meetuprnantes.jpeg"
-    keep_md: true
+    logo: img/rmarkdown.png
 ---
 ```
 
-[`r fontawesome::fa('exclamation-triangle', fill= "red")` **Attention à l'indentation**]{}
+<font size="4">**De nombreuses variables sont paramétrables**. Certaines sont spécifiques à des formats de sortie ou à des templates. Mais, dans tous les cas :</font>
+
+[`r fontawesome::fa('exclamation-triangle')` **L'indentation des variables doit être parfaite !**]{}
 
 
 
+## Multiplier les formats de sortie ?
 
-
-
-## Multipliez les format de sortie
-
-Avec `output`, vous pouvez produire plusieurs formats à partir du même fichier source : 
+La variable `output` vous offre la possibilité de produire plusieurs formats à partir du même fichier Rmd : 
 
 ```yaml
 ---
-title: Créez vos documents avec R Markdown
-author: Romain Lesur
-date: 21 janvier 2019
+title: Programmation lettrée et Notebook
+author: Marc Done
+date: `r Sys.Date()`
 output: 
   html_document: default
   pdf_document: default
 ---
 ```
 
-Exécuter dans la console :
+*Kniter* votre fichier en ligne de commande de la façon suivante :
 
 ```r
-rmarkdown::render("monfichier.Rmd", output_format = "all")
+rmarkdown::render("mon_premier_rmarkdown.Rmd", output_format = "all")
 ```
 
-## Type de documents
+## Les *templates* disponibles
 
-Vous pouvez produire :
+<font size="5"> **De nombreux packages fournissent des modèles de mise en page prêts à l'emploi** :</font> 
 
-- des documents HTML
-- des documents paginés (articles, livres, thèses) : pdf avec $\LaTeX$, docx, odt...
-- des présentations : HTML et pptx
-- des tableaux de bord
-- des cours et sujets d'examens
-- des sites internet statiques
+<font size="4">`bookdown`, `distill`, `flexdashboard`, `hrbrthemes`, `komadown`, `komaletter`, `learnr`, `linl`, `memor`, `pagedown`, `papaja`, `pinp`, `prettydoc`, `radix`, `revealjs`, `rmarkdown`, `rmdformats`, `rmdshower`, `rticles`, `rzine`, `tufte`, `unilur`, `vitae`, `xaringan`...</font> 
 
-## Modèles prêts à l'emploi
+<font size="5">Ils permettent de produire des documents de toute forme, comme :</font> 
 
-De nombreux packages fournissent des modèles prêts à l'emploi : `rmarkdown`, `flexdashboard`, `hrbrthemes`, `komadown`, `komaletter`, `learnr`, `linl`, `memor`, [`papaja`](https://github.com/crsh/papaja), `pinp`, `prettydoc`, `radix`, `revealjs`, `rmdformats`, `rmdshower`, `rticles`, `tufte`, [`unilur`](https://koncina.github.io/unilur/), `vitae`, `xaringan`...
+<font size="4">
+- des documents (pages) HTML,    
+- des documents paginés (articles, livres, thèses) en pdf avec $\LaTeX$, docx, odt...,    
+- des présentations/diaporama en format HTML, pdf ou pptx,    
+- des tableaux de bord interactif,   
+- des cours et sujets d'examens (interactif ou non),   
+- et même des sites internet statiques !   
+</font>
 
-Pour les livres et thèses : `bookdown`
 
-Pour les sites web : `blogdown`
-
-## Des packages pour aider sur des taches spécifiques
-
-Tout un écosystème de packages pour aider : 
-
-- l'incroyable `officer` de David Gohel pour MS Office
-- `tinytex` pour installer facilement $\LaTeX$
-- pour les tableaux : `flextable` (David Gohel), `kableExtra`, `gt`...
-
-## Des documents paramétrés
-
-A partir du même fichier R Markdown, produire des rapports sur différentes zones géographiques, différentes périodes...
+## Exemple `rmdformats`
 
 ```yaml
 ---
-title: My Document
+title: "Template readthedown proposé par le package rmdformats"
+date: "`r Sys.Date()`"
+output:
+  rmdformats::readthedown:
+    highlight: kate
+---
+```
+
+</br>
+
+L'interface Rstudio permet de générer un rmd paramétré dans un modèle de mise en page souhaité. Pour cela, installer le package qui fournit le template que vous souhaitez utiliser. Ex :
+
+```r
+install.packages("rmdformats")
+```
+
+
+## Exemple `rmdformats`
+
+Une fois installé, les templates proposés par la package installés sont disponibles en clic-buton dans Rstudio :
+
+```{r include = TRUE, eval = TRUE, echo = FALSE, fig.align='center', out.width="60%"}
+include_graphics("img/rmdformats.png")
+```
+
+
+
+## Ajouter ses variables... modulables !
+
+Pour produire des rapports sur différentes périodes, zones géographiques... A partir du même fichier R Markdown ! 
+
+```yaml
+---
+title: Rapport statistique IDH
 output: html_document
 params:
-  annee: 2018
+  annee: 2023
   region: Europe
 ---
 ```
 
-Disponible depuis le bouton `Knit` de RStudio ou
+</br>
+
+*Kniter* votre fichier en ligne de commande de la façon suivante :
 
 ```r
-rmarkdown::render("monfichier.Rmd", params = list(annee = 2018, region = Europe))
+rmarkdown::render("monfichier.Rmd", params = list(annee = 2013, region = Asie))
 ```
 
+## Ajouter ses variables... modulables !
+
+Cette fonctionnalité est aussi disponible en clic-bouton via l'interface Rstudio :
+
+::: {.columns-2}
+
+```{r include = TRUE, eval = TRUE, echo = FALSE, fig.align='center', out.width="60%"}
+include_graphics("img/params.png")
+```
+
+
+```{r include = TRUE, eval = TRUE, echo = FALSE, fig.align='center', out.width="100%"}
+include_graphics("img/params2.png")
+```
+
+:::
+
+
+
 ## Texte balisé en `markdown`
+
+
+
+``` {.markdown .eval}
+
+# Markdown Cheat Sheet
+
+Thanks for visiting [The Markdown Guide](https://www.markdownguide.org)!
+
+This Markdown cheat sheet provides a quick overview of all the Markdown syntax elements. It can’t cover every edge case, so if you need more information about any of these elements, refer to the reference guides for [basic syntax](https://www.markdownguide.org/basic-syntax) and [extended syntax](https://www.markdownguide.org/extended-syntax).
+
+## Basic Syntax
+
+These are the elements outlined in John Gruber’s original design document. All Markdown applications support these elements.
+
+### Heading
+
+# H1
+## H2
+### H3
+
+### Bold
+
+**bold text**
+
+### Italic
+
+*italicized text*
+
+### Blockquote
+
+> blockquote
+
+### Ordered List
+
+1. First item
+2. Second item
+3. Third item
+
+### Unordered List
+
+- First item
+- Second item
+- Third item
+
+### Code
+
+`code`
+
+### Horizontal Rule
+
+---
+
+### Link
+
+[Markdown Guide](https://www.markdownguide.org)
+
+### Image
+
+![alt text](https://www.markdownguide.org/assets/images/tux.png)
+
+## Extended Syntax
+
+These elements extend the basic syntax by adding additional features. Not all Markdown applications support these elements.
+
+### Table
+
+| Syntax | Description |
+| ----------- | ----------- |
+| Header | Title |
+| Paragraph | Text |
+
+
+### Footnote
+
+Here's a sentence with a footnote. [^1]
+
+[^1]: This is the footnote.
+
+### Heading ID
+
+### My Great Heading {#custom-id}
+
+### Definition List
+
+term
+: definition
+
+### Strikethrough
+
+~~The world is flat.~~
+
+### Task List
+
+- [x] Write the press release
+- [ ] Update the website
+- [ ] Contact the media
+
+### Emoji
+
+That is so funny! :joy:
+
+(See also [Copying and Pasting Emoji](https://www.markdownguide.org/extended-syntax/#copying-and-pasting-emoji))
+
+### Highlight
+
+I need to highlight these ==very important words==.
+
+### Subscript
+
+H~2~O
+
+### Superscript
+
+X^2^
+
+
+```
+
+
+
+
+
+
+
 
 ## Ligne de code
 
