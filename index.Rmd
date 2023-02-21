@@ -1,7 +1,7 @@
 ---
 title: "Programmation lettrée et _Notebook_"
-author: "Module d'initiation à R"
-date: Ecole d'été du CIST 2023 - Ouidah, Bénin
+author: 
+date: "Module d'initiation à R - Ecole d'été du CIST 2023 - Ouidah, Bénin"
 output:
   ioslides_presentation:
     logo: img/rmarkdown.png
@@ -63,6 +63,8 @@ div(class = "columns-2",
 )
 ```
 
+# Rmarkdown avec Rstudio
+
 ## Prise en main facile avec RStudio
 
 Menu `File > New File > R Markdown...`
@@ -90,6 +92,8 @@ include_graphics("img/knit2.png")
 <iframe src="mon_premier_rmarkdown.html"></iframe>
 
 
+# Comment cela fonctionne ?
+
 ##  `r emoji('knit')` Tricot d'un Rmarkdown ?
 
 ```{r include = TRUE, eval = TRUE, echo = FALSE, fig.align='center', out.width="100%"}
@@ -101,13 +105,13 @@ include_graphics("img/schema_rmd.png")
 
 
 
-## Rappel : les 3 composants d'un rmd
+## Les 3 composants d'un rmd
 
 ```{r include = TRUE, eval = TRUE, echo = FALSE, fig.align='center', out.width="100%"}
 include_graphics("img/rmardown.PNG")
 ```
 
-## Rappel : les 3 composants d'un rmd
+## Les 3 composants d'un rmd
 
 - **En-tête `YAML`** : indications de variables pour la compilation du document : métadonnées (titre, auteur, date...), type de document souhaité (format et template), options de mise en page (TOC, Bibliographie, CSS...).    
 <font size="4">Documentation &rarr; [***R Markdown: The Definitive Guide***](https://bookdown.org/yihui/rmarkdown/html-document.html).</font>  
@@ -180,7 +184,7 @@ rmarkdown::render("mon_premier_rmarkdown.Rmd", output_format = "all")
 </font>
 
 
-## Exemple `rmdformats`
+## Ex : `rmdformats` - modèle `readthedown`
 
 ```yaml
 ---
@@ -203,7 +207,7 @@ install.packages("rmdformats")
 
 ## Exemple `rmdformats`
 
-Une fois installé, les templates proposés par la package installés sont disponibles en clic-buton dans Rstudio :
+Une fois installé, les templates proposés par le package installés sont disponibles en clic-buton dans Rstudio :
 
 ```{r include = TRUE, eval = TRUE, echo = FALSE, fig.align='center', out.width="60%"}
 include_graphics("img/rmdformats.png")
@@ -239,6 +243,13 @@ Cette fonctionnalité est aussi disponible en clic-bouton via l'interface Rstudi
 
 ::: {.columns-2}
 
+\
+
+```{r include = TRUE, eval = TRUE, echo = FALSE, fig.align='center', out.width="30%"}
+include_graphics("img/knit_buton2.png")
+```
+
+
 ```{r include = TRUE, eval = TRUE, echo = FALSE, fig.align='center', out.width="60%"}
 include_graphics("img/params.png")
 ```
@@ -255,129 +266,25 @@ include_graphics("img/params2.png")
 ## B. Zone de texte - balisage `markdown`
 
 
-``` {.markdown .eval}
 
-# Markdown Cheat Sheet
-
-Thanks for visiting [The Markdown Guide](https://www.markdownguide.org)!
-
-This Markdown cheat sheet provides a quick overview of all the Markdown syntax elements. It can’t cover every edge case, so if you need more information about any of these elements, refer to the reference guides for [basic syntax](https://www.markdownguide.org/basic-syntax) and [extended syntax](https://www.markdownguide.org/extended-syntax).
-
-## Basic Syntax
-
-These are the elements outlined in John Gruber’s original design document. All Markdown applications support these elements.
-
-### Heading
-
-# H1
-## H2
-### H3
-
-### Bold
-
-**bold text**
-
-### Italic
-
-*italicized text*
-
-### Blockquote
-
-> blockquote
-
-### Ordered List
-
-1. First item
-2. Second item
-3. Third item
-
-### Unordered List
-
-- First item
-- Second item
-- Third item
-
-### Code
-
-`code`
-
-### Horizontal Rule
-
----
-
-### Link
-
-[Markdown Guide](https://www.markdownguide.org)
-
-### Image
-
-![alt text](https://www.markdownguide.org/assets/images/tux.png)
-
-## Extended Syntax
-
-These elements extend the basic syntax by adding additional features. Not all Markdown applications support these elements.
-
-### Table
-
-| Syntax | Description |
-| ----------- | ----------- |
-| Header | Title |
-| Paragraph | Text |
-
-
-### Footnote
-
-Here's a sentence with a footnote. [^1]
-
-[^1]: This is the footnote.
-
-### Heading ID
-
-### My Great Heading {#custom-id}
-
-### Definition List
-
-term
-: definition
-
-### Strikethrough
-
-~~The world is flat.~~
-
-### Task List
-
-- [x] Write the press release
-- [ ] Update the website
-- [ ] Contact the media
-
-### Emoji
-
-That is so funny! :joy:
-
-(See also [Copying and Pasting Emoji](https://www.markdownguide.org/extended-syntax/#copying-and-pasting-emoji))
-
-### Highlight
-
-I need to highlight these ==very important words==.
-
-### Subscript
-
-H~2~O
-
-### Superscript
-
-X^2^
-
-
+```{r include = TRUE, eval = TRUE, echo = FALSE, fig.align='center', out.width="100%"}
+include_graphics("img/markdown_guide.png")
 ```
 
+[https://www.markdownguide.org/]{.linkcenter}
+
+```{css, echo=FALSE}
+.linkcenter {
+  font-size: 60%;
+}
+```
 
 
 ## C. Bloc de code - *chunks*
 
 Deux façons d'insérer du code dans son document :
 
-1. Code chunk  
+1. **Code chunk**  
 
     ````r
     `r ''````{r, eval=TRUE, echo=FALSE}
@@ -388,13 +295,13 @@ Deux façons d'insérer du code dans son document :
     ````
     
     
-1. Inline code 
+2. **Inline code**, pour inclure du code dans une zone de texte
 
     ````markdown
     La moyenne est de `r '\x60r mean(mtcars$cyl)\x60'`.
     ````
 
-## Les [options d'un chunk](https://yihui.name/knitr/options/)
+## Les [options disponibles](https://yihui.name/knitr/options/)
 
 
 ```{r include = TRUE, eval = TRUE, echo = FALSE, fig.align='center', out.width="65%"}
@@ -402,47 +309,14 @@ include_graphics("img/chunk_params.jpg")
 ```
 
 
-## *chunk* multilangage
+## *chunk* plurilingues
 
 ```{r}
 names(knitr::knit_engines$get())
 ```
 
 
-## Cheatsheet Rmarkdown
-
-
-[[R Markdown Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf) par [RStudio](https://www.rstudio.com/), licence [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)]{.license}
-
-<iframe src="https://posit.co/wp-content/uploads/2022/10/rmarkdown-1.pdf"></iframe>
-
-
-
-
-## Références
-
-Xie, Y., J.J. Allaire et G. Grolemund _R Markdown: The Definitive Guide_ <https://bookdown.org/yihui/rmarkdown/>
-
-Xie, Y. _`knitr` Elegant, flexible, and fast dynamic report generation with R_ <https://yihui.name/knitr/>
-
-En cours de rédaction :  
-Harper M. et Y. Xie _R Markdown Cookbook_ <https://dr-harper.github.io/rmarkdown-cookbook/>
-
-Romain Lesur
-
-Julien Barnier : <https://juba.github.io/tidyverse/13-rmarkdown.html>
-
-https://bookdown.org/yihui/rmarkdown/
-
-https://bookdown.org/yihui/bookdown/
-
-https://bookdown.org/yihui/rmarkdown-cookbook/
-
-
-## A vous de jouer !
-
-
-## Exemple : `python` avec le package `reticulate` {.smaller}
+## Ex : `python` et le package `reticulate` {.smaller}
 
 ```{r, include=FALSE, eval=FALSE}
 library(reticulate)
@@ -454,7 +328,7 @@ py_install(c("pandas", "numpy"))
 1. Initialisation de la configuration
 
     ````r
-    `r ''````{r, include=FALSE, eval=FALSE}
+    `r ''````{r, include = FALSE, eval = TRUE}
     library(reticulate)
     use_python("usr/local/bin/python")
     use_virtualenv("r-reticulate")
@@ -465,49 +339,68 @@ py_install(c("pandas", "numpy"))
 1. Script python
 
     ````py
-    `r ''````{python, eval=FALSE}
-    a = 1
+    `r ''````{python, eval = TRUE}
+    a = 15 + 45
     print(a)
     ```
     ````
 
-    ```{python, eval=FALSE}
-    a = 1
+    ```{python, echo = FALSE}
+    a = 15 + 45
     print(a)
     ```
 
-## Communication entre R et python {.smaller}
 
-```{python, echo=FALSE, eval=FALSE}
-import pandas as pd
-import numpy as np
+## Exemple : `SQL` avec scripts externes
 
-dates = pd.date_range('20130101', periods=6)
-df = pd.DataFrame(np.random.randn(6,4), index=dates, columns=list('ABCD'))
+```{r, echo=FALSE}
+conn <- DBI::dbConnect(RSQLite::SQLite(), path = ":memory:")
+DBI::dbWriteTable(conn, "mtcars", mtcars)
 ```
 
-````py
-`r ''````{python}
-import pandas as pd
-import numpy as np
-
-dates = pd.date_range('20130101', periods=6)
-df = pd.DataFrame(np.random.randn(6,4), index=dates, columns=list('ABCD'))
-```
-````
-
+**Etape 1 : connexion à la base de données**  
 ````r
-`r ''````{r}
-head(py$df, n = 2L)
+`r ''````{r , eval = TRUE}
+conn <- DBI::dbConnect(RSQLite::SQLite(), path = ":memory:")
 ```
 ````
-```{r, echo=FALSE, eval=FALSE}
-head(py$df, n = 2L)
+
+\
+
+**Pour se déconnecter (en fin de document) :**  
+````r
+`r ''````{r , eval = TRUE}
+DBI::dbDisconnect(conn)
+```
+````
+
+---
+
+**Etape 2 : Lecture et éxécution d'un fichier sql** 
+
+
+
+````markdown
+`r ''````{sql, connection=conn, code=readLines('sql/list_tables.sql')}
+
+```
+````
+
+```{sql, connection=conn, code=readLines('sql/list_tables.sql')}
 ```
 
-## Exemple : `node.js` avec un script externe {.smaller}
 
-Vous voulez écrire un cours sur `node.js`.  
+
+```{r, eval=TRUE, echo =FALSE}
+DBI::dbDisconnect(conn)
+```
+
+
+
+
+## Ex : `node.js` avec un script externe {.smaller}
+
+Vous voulez présenter du code `node.js`.  
 Vos scripts sont dans des fichiers `.js`.
 
 Vous pouvez écrire :
@@ -520,53 +413,15 @@ Vous pouvez écrire :
 ```{node, code=readLines('node/example.js'), eval=FALSE}
 ```
 
-Voir le repo source : <https://github.com/RLesur/meetup-r-nantes-rmd>
 
-## Exemple : `SQL` avec scripts externes
-
-```{r, echo=FALSE}
-conn <- DBI::dbConnect(RSQLite::SQLite(), path = ":memory:")
-DBI::dbWriteTable(conn, "mtcars", mtcars)
-```
-
-**Etape 1 : connexion à la base de données**  
-````r
-`r ''````{r, include=FALSE}
-conn <- DBI::dbConnect(RSQLite::SQLite(), path = ":memory:")
-```
-````
-
-````markdown
-`r ''````{sql, connection=conn, code=readLines('sql/list_tables.sql')}
-```
-````
-
-```{sql, connection=conn, code=readLines('sql/list_tables.sql')}
-```
-
----
-
-````markdown
-`r ''````{sql, connection=conn, code=readLines('sql/data.sql')}
-```
-````
-
-```{sql, connection=conn, code=readLines('sql/data.sql')}
-```
-
-**Se déconnecter :**  
-````r
-`r ''````{r, echo=FALSE}
-DBI::dbDisconnect(conn)
-```
-````
-
-```{r, echo=FALSE}
-DBI::dbDisconnect(conn)
-```
+# Un peu de documentation ?
 
 
-## R Markdown Cheat Sheet
+## Cheatsheet Rmarkdown
+
+[[R Markdown Cheat Sheet](https://posit.co/wp-content/uploads/2022/10/rmarkdown-1.pdf) par [RStudio](https://www.rstudio.com/), licence [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)]{.license}
+
+<iframe src="https://posit.co/wp-content/uploads/2022/10/rmarkdown-1.pdf"></iframe>
 
 ```{css, echo=FALSE}
 .license {
@@ -577,16 +432,58 @@ DBI::dbDisconnect(conn)
 ```
 
 
-## Le fonctionnement de R Markdown
+## Bibliographie
 
-Le package `rmarkdown` assure la bonne exécution des étapes suivantes :
 
-- fichier `.Rmd`  fichier `.md` = `knitr`  
-  Exécution des chunks et insertion du résultat
+**Les références :**
 
-- fichier `.md`  fichier `.html` ou `.tex`, `.docx`, `.odt`... = **Pandoc**
-  
-Pour les pdf avec $\LaTeX$, étape supplémentaire :
+- [Xie, Y., J.J. Allaire et G. Grolemund [_R Markdown: The Definitive Guide_](https://bookdown.org/yihui/rmarkdown/)]{.reference}   
+- [Xie Yihui, [_`knitr` Elegant, flexible, and fast dynamic report generation with R_](https://yihui.name/knitr/)]{.reference}   
+- [Xie, Y., C. Dervieux et E. Riederer [_R Markdown Cookbook_](https://bookdown.org/yihui/rmarkdown-cookbook/)]{.reference}   
+- [Xie Yihui, [_bookdown: Authoring Books and Technical Documents with R Markdown_](https://bookdown.org/yihui/bookdown/)]{.reference}   
 
-- fichier `.tex`  fichier `.pdf` = $\LaTeX$ 
+\
+
+**En français :**
+
+- [Julien Barnier, [_Introduction à R et au tidyverse - Diffuser et publier avec rmarkdown_](https://juba.github.io/tidyverse/13-rmarkdown.html)]{.reference}
+- [Lino Galiana et al. (INSEE), [_Utilitaire - Produire des documents avec R Markdown_](https://www.book.utilitr.org/03_fiches_thematiques/fiche_rmarkdown)]{.reference}
+
+
+```{css, echo=FALSE}
+.reference {
+  font-size: 76%;
+}
+```
+
+
+## Crédits
+
+Cette présentation est fortement inspirée d'un excellent support de communication existant, dont le code source est [disponible sur GitHub](https://github.com/RLesur/meetup-r-nantes-rmd).
+
+- [Romain Lesur, [_Créez vos documents avec Rmarkdown_](https://rlesur.github.io/meetup-r-nantes-rmd/#1), Janvier 2019, Nantes]{.reference}
+
+
+\
+
+Il s'agit d'un document Rmarkdown au format ***ioslides***. Il a donc été très simple de repartir du code source original pour produire ce diaporama !
+
+
+
+# À vous de jouer !
+
+
+
+<!-- ## Le fonctionnement de R Markdown -->
+
+<!-- Le package `rmarkdown` assure la bonne exécution des étapes suivantes : -->
+
+<!-- - fichier `.Rmd`  fichier `.md` = `knitr`   -->
+<!--   Exécution des chunks et insertion du résultat -->
+
+<!-- - fichier `.md`  fichier `.html` ou `.tex`, `.docx`, `.odt`... = **Pandoc** -->
+
+<!-- Pour les pdf avec $\LaTeX$, étape supplémentaire : -->
+
+<!-- - fichier `.tex`  fichier `.pdf` = $\LaTeX$  -->
 
