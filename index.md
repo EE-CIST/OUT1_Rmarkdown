@@ -1,7 +1,6 @@
 ---
 title: "Programmation lettrée et _Notebook_"
-author: 
-date: "Module d'initiation à R - Ecole d'été du CIST 2023 - Ouidah, Bénin"
+author: "Module d'initiation à R - Ecole d'été du CIST 2023 - Ouidah, Bénin"
 output:
   ioslides_presentation:
     logo: img/rmarkdown.png
